@@ -3,6 +3,8 @@ import { Box, Container } from '@chakra-ui/react'
 import Head from 'next/head'
 import { NextRouter } from 'next/router'
 
+import Navbar from '../Navbar'
+
 interface MainLayoutProps {
   children: ReactNode
   router: NextRouter
@@ -15,6 +17,8 @@ const Main = ({ children, router }: MainLayoutProps) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Madlife - Homepage</title>
       </Head>
+
+      <Navbar path={router.asPath} />
 
       <Container maxW="container.md" pt={14}>
         {children}
