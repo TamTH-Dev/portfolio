@@ -5,10 +5,18 @@ import {
   Button,
   Container,
   Heading,
+  Icon,
   Image,
+  List,
+  ListItem,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
+import {
+  IoLogoTwitter,
+  IoLogoInstagram,
+  IoLogoGithub,
+} from 'react-icons/io5'
 
 import ArticleLayout from '../components/layouts/article'
 import Section from '../components/Section'
@@ -24,7 +32,6 @@ const Index = () => {
           bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
           p={3}
           mb={6}
-          mt={6}
           align="center"
         >
           Hello, I&apos;m a full-stack developer
@@ -97,7 +104,50 @@ const Index = () => {
           <Heading as="h3" variant="section-title">
             I ♥
           </Heading>
-          <Paragraph>Coding, Sport, Music and Games</Paragraph>
+          <Paragraph>Coding, Sports and Music</Paragraph>
+        </Section>
+
+        <Section delay={0.3}>
+          <Heading as="h3" variant="section-title">
+            On the web
+          </Heading>
+          <List>
+            <ListItem>
+              <NextLink href="https://github.com/TamTH-Dev">
+                <Button
+                  variant="ghost"
+                  colorScheme="teal"
+                  leftIcon={<Icon as={IoLogoGithub} />}
+                >
+                  @madlife
+                </Button>
+              </NextLink>
+            </ListItem>
+            <ListItem>
+              <NextLink href="https://twitter.com/Madlife48902037">
+                <Button
+                  variant="ghost"
+                  colorScheme="teal"
+                  leftIcon={<Icon as={IoLogoTwitter} />}
+                >
+                  @Madlife48902037
+                </Button>
+              </NextLink>
+            </ListItem>
+            <ListItem>
+              <NextLink
+                href="https://www.instagram.com/madlife_th"
+              >
+                <Button
+                  variant="ghost"
+                  colorScheme="teal"
+                  leftIcon={<Icon as={IoLogoInstagram} />}
+                >
+                  @madlife
+                </Button>
+              </NextLink>
+            </ListItem>
+          </List>
         </Section>
       </Container>
     </ArticleLayout>

@@ -37,7 +37,7 @@ const LinkItem = ({ href, path, children }: ILinkItemProps) => {
       <Link
         p={2}
         bg={active ? 'glassTeal' : undefined}
-        color={active ? '#202023' : inactiveColor}
+        color={active ? '#24283b' : inactiveColor}
       >
         {children}
       </Link>
@@ -52,7 +52,7 @@ const Navbar = (props: INavbarProps) => {
       position="fixed"
       as="nav"
       w="100%"
-      bg={useColorModeValue('#ffffff40', '#20202380')}
+      bg={useColorModeValue('#d5d6db', '#1a1b26')}
       style={{ backdropFilter: 'blur(10px)' }}
       zIndex={1}
       {...props}
@@ -82,9 +82,6 @@ const Navbar = (props: INavbarProps) => {
           <LinkItem href="/works" path={path}>
             Works
           </LinkItem>
-          <LinkItem href="/posts" path={path}>
-            Posts
-          </LinkItem>
         </Stack>
 
         <Box flex={1} align="right">
@@ -104,9 +101,6 @@ const Navbar = (props: INavbarProps) => {
                 </NextLink>
                 <NextLink href="/works" passHref>
                   <MenuItem as={Link}>Works</MenuItem>
-                </NextLink>
-                <NextLink href="/posts" passHref>
-                  <MenuItem as={Link}>Posts</MenuItem>
                 </NextLink>
               </MenuList>
             </Menu>

@@ -5,7 +5,7 @@ import { Box, Text, LinkBox, LinkOverlay } from '@chakra-ui/react'
 import { Global } from '@emotion/react'
 
 interface IGeneralGridProps {
-  children: ReactNode
+  children?: ReactNode
   title: string
   thumbnail: StaticImageData
 }
