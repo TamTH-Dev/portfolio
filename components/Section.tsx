@@ -8,12 +8,12 @@ const StyledDiv = chakra(motion.div, {
   },
 })
 
-interface SectionProps {
+interface ISectionProps {
   children: ReactNode
-  delay: any
+  delay?: any
 }
 
-const Section = ({ children, delay = 0 }: SectionProps) => {
+const Section = ({ children, delay = 0 }: ISectionProps) => {
   const transition: any = {
     duration: 0.8,
     delay,

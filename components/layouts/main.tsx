@@ -4,13 +4,15 @@ import Head from 'next/head'
 import { NextRouter } from 'next/router'
 
 import Navbar from '../Navbar'
+import VoxelDog from '../VoxelDog'
+import NoSsr from '../NoSsr'
 
-interface MainLayoutProps {
+interface IMainLayoutProps {
   children: ReactNode
   router: NextRouter
 }
 
-const Main = ({ children, router }: MainLayoutProps) => {
+const MainLayout = ({ children, router }: IMainLayoutProps) => {
   return (
     <Box as="main" pb={8}>
       <Head>
@@ -21,10 +23,13 @@ const Main = ({ children, router }: MainLayoutProps) => {
       <Navbar path={router.asPath} />
 
       <Container maxW="container.md" pt={14}>
+        <NoSsr>
+          <VoxelDog />
+        </NoSsr>
         {children}
       </Container>
     </Box>
   )
 }
 
-export default Main
+export default MainLayout
