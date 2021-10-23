@@ -34,8 +34,8 @@ const DogSpinner = () => (
   />
 )
 
-const DogContainer = forwardRef(
-  ({ children }: { children: ReactNode }, ref: any) => (
+const DogContainer = forwardRef<HTMLDivElement, { children: ReactNode }>(
+  ({ children }, ref) => (
     <Box
       ref={ref}
       className="voxel-dog"
@@ -51,17 +51,15 @@ const DogContainer = forwardRef(
   )
 )
 
-const VoxelDog = () => {
-  const refContainer: any = useRef()
+function VoxelDog() {
+  const refContainer = useRef<HTMLDivElement>(null)
   const [loading, setLoading] = useState(true)
   const [renderer, setRenderer] = useState<WebGLRenderer>()
-  const [_camera, setCamera] = useState<OrthographicCamera>()
   const [target] = useState(new Vector3(-0.5, 1.2, 0))
   const [initialCameraPosition] = useState(
     new Vector3(20 * Math.sin(0.2 * Math.PI), 10, 20 * Math.cos(0.2 * Math.PI))
   )
   const [scene] = useState(new Scene())
-  const [_controls, setControls] = useState<OrbitControls>()
 
   const handleWindowResize = useCallback(() => {
     const { current: container } = refContainer
@@ -102,7 +100,7 @@ const VoxelDog = () => {
     )
     camera.position.copy(initialCameraPosition)
     camera.lookAt(target)
-    setCamera(camera)
+    // setCamera(camera)
 
     const ambientLight = new AmbientLight(0xcccccc, 1)
     scene.add(ambientLight)
@@ -110,7 +108,6 @@ const VoxelDog = () => {
     const controls = new OrbitControls(camera, newRenderer.domElement)
     controls.autoRotate = true
     controls.target = target
-    setControls(controls)
 
     loadGLTFModel(scene, '/dog.glb', {
       receiveShadow: false,
@@ -120,8 +117,8 @@ const VoxelDog = () => {
       setLoading(false)
     })
 
-    let req: number = 0
-    let frame: number = 0
+    let req = 0
+    let frame = 0
     const animate = () => {
       req = requestAnimationFrame(animate)
 
@@ -146,7 +143,7 @@ const VoxelDog = () => {
       cancelAnimationFrame(req)
       newRenderer.dispose()
     }
-  }, [])
+  }, [initialCameraPosition, renderer, scene, target])
 
   useEffect(() => {
     window.addEventListener('resize', handleWindowResize, false)

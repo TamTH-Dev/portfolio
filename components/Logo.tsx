@@ -1,8 +1,7 @@
 import NextLink from 'next/link'
 import Image from 'next/image'
-
 import styled from '@emotion/styled'
-import { Text, useColorModeValue } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 
 const LogoBox = styled.span`
   font-weight: bold;
@@ -12,25 +11,16 @@ const LogoBox = styled.span`
   height: 30px;
   line-height: 30px;
   padding: 10px;
-
-  & img {
-    transition: transform 0.25s ease-in-out;
-  }
-
-  &:hover img {
-    transform: rotate(20deg);
-  }
 `
 
 const Logo = () => {
-  const footPrintImg = `/images/footprint${useColorModeValue('', '-dark')}.png`
+  const demo = 'https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif'
   return (
     <NextLink href="/">
       <a>
         <LogoBox>
-          <Image src={footPrintImg} width={20} height={20} alt="Logo" />
+          <Image src={demo} width={20} height={20} alt="Logo" />
           <Text
-            color={useColorModeValue('gray.800', 'whiteAlpha.900')}
             fontFamily="M PLUS Rounded 1c"
             fontWeight="bold"
             ml={3}

@@ -14,9 +14,9 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 import NextLink from 'next/link'
+import { HamburgerIcon } from '@chakra-ui/icons'
 
 import Logo from './Logo'
-import { HamburgerIcon } from '@chakra-ui/icons'
 import ThemeToggleButton from './ThemeToggleButton'
 
 interface ILinkItemProps {
@@ -31,13 +31,16 @@ interface INavbarProps {
 
 const LinkItem = ({ href, path, children }: ILinkItemProps) => {
   const active = path === href
-  const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
+  const bgActiveColor = useColorModeValue('c_red.light', 'c_red.dark')
+  const fgActiveColor = useColorModeValue('c_text.dark', 'c_text.light')
+  const fgInactiveColor = useColorModeValue('c_text.light', 'c_text.dark')
   return (
     <NextLink href={href}>
       <Link
         p={2}
-        bg={active ? 'glassTeal' : undefined}
-        color={active ? '#24283b' : inactiveColor}
+        bg={active ? bgActiveColor : undefined}
+        color={active ? fgActiveColor : fgInactiveColor}
+        borderRadius="10px"
       >
         {children}
       </Link>
@@ -79,7 +82,8 @@ const Navbar = (props: INavbarProps) => {
           flexGrow={1}
           mt={{ base: 4, md: 0 }}
         >
-          <LinkItem href="/works" path={path}>
+          <LinkItem
+            href="/works" path={path}>
             Works
           </LinkItem>
         </Stack>

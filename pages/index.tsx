@@ -7,16 +7,13 @@ import {
   Heading,
   Icon,
   Image,
+  Link,
   List,
   ListItem,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
-import {
-  IoLogoTwitter,
-  IoLogoInstagram,
-  IoLogoGithub,
-} from 'react-icons/io5'
+import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
 
 import ArticleLayout from '../components/layouts/article'
 import Section from '../components/Section'
@@ -29,7 +26,7 @@ const Index = () => {
       <Container>
         <Box
           borderRadius="lg"
-          bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
+          bg={useColorModeValue('whiteAlpha.500', 'whiteAlpha.100')}
           p={3}
           mb={6}
           align="center"
@@ -38,9 +35,7 @@ const Index = () => {
         </Box>
         <Box display={{ md: 'flex' }}>
           <Box flexGrow={1}>
-            <Heading as="h2" variant="page-title">
-              Madlife
-            </Heading>
+            <Heading as="h2">Madlife</Heading>
             <p>Developer</p>
           </Box>
 
@@ -51,7 +46,7 @@ const Index = () => {
             align="center"
           >
             <Image
-              borderColor="whiteAlpha.800"
+              borderColor="whiteAlpha.500"
               borderWidth={2}
               borderStyle="solid"
               w={100}
@@ -79,7 +74,11 @@ const Index = () => {
           </Paragraph>
           <Box align="center" my={4}>
             <NextLink href="/works">
-              <Button rightIcon={<ChevronRightIcon />} colorScheme="teal">
+              <Button
+                rightIcon={<ChevronRightIcon />}
+                background={useColorModeValue('c_blue.light', 'c_blue.dark')}
+                color={useColorModeValue('c_text.dark', 'c_text.light')}
+              >
                 My portfolio
               </Button>
             </NextLink>
@@ -113,39 +112,37 @@ const Index = () => {
           </Heading>
           <List>
             <ListItem>
-              <NextLink href="https://github.com/TamTH-Dev">
+              <Link color="orange.200" href="https://github.com/TamTH-Dev">
                 <Button
                   variant="ghost"
-                  colorScheme="teal"
+                  color={useColorModeValue('c_green.light', 'c_green.dark')}
                   leftIcon={<Icon as={IoLogoGithub} />}
                 >
                   @madlife
                 </Button>
-              </NextLink>
+              </Link>
             </ListItem>
             <ListItem>
-              <NextLink href="https://twitter.com/Madlife48902037">
+              <Link href="https://twitter.com/Madlife48902037">
                 <Button
                   variant="ghost"
-                  colorScheme="teal"
+                  color={useColorModeValue('c_green.light', 'c_green.dark')}
                   leftIcon={<Icon as={IoLogoTwitter} />}
                 >
                   @Madlife48902037
                 </Button>
-              </NextLink>
+              </Link>
             </ListItem>
             <ListItem>
-              <NextLink
-                href="https://www.instagram.com/madlife_th"
-              >
+              <Link href="https://www.instagram.com/madlife_th">
                 <Button
                   variant="ghost"
-                  colorScheme="teal"
+                  color={useColorModeValue('c_green.light', 'c_green.dark')}
                   leftIcon={<Icon as={IoLogoInstagram} />}
                 >
                   @madlife
                 </Button>
-              </NextLink>
+              </Link>
             </ListItem>
           </List>
         </Section>
