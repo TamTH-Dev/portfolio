@@ -34,6 +34,14 @@ const LinkItem = ({ href, path, children }: ILinkItemProps) => {
   const bgActiveColor = useColorModeValue('c_red.light', 'c_red.dark')
   const fgActiveColor = useColorModeValue('c_white.light', 'c_black.dark')
   const fgInactiveColor = useColorModeValue('c_black.light', 'c_white.dark')
+  const hoveredFgInactiveColor = useColorModeValue(
+    'c_black.light',
+    'c_white.dark'
+  )
+  const hoveredBgInactiveColor = useColorModeValue(
+    'whiteAlpha.500',
+    'whiteAlpha.100'
+  )
   return (
     <NextLink href={href}>
       <Link
@@ -41,12 +49,8 @@ const LinkItem = ({ href, path, children }: ILinkItemProps) => {
         bg={active ? bgActiveColor : undefined}
         color={active ? fgActiveColor : fgInactiveColor}
         _hover={{
-          background: !active
-            ? useColorModeValue('whiteAlpha.500', 'whiteAlpha.100')
-            : undefined,
-          color: !active
-            ? useColorModeValue('c_black.light', 'c_white.dark')
-            : undefined,
+          background: !active ? hoveredBgInactiveColor : undefined,
+          color: !active ? hoveredFgInactiveColor : undefined,
         }}
         borderRadius="lg"
       >
