@@ -5,20 +5,17 @@ import {
   Button,
   Container,
   Heading,
-  Icon,
   Image,
-  Link,
-  List,
-  ListItem,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { ChevronRightIcon } from '@chakra-ui/icons'
-import { IoLogoTwitter, IoLogoInstagram, IoLogoGithub } from 'react-icons/io5'
 
 import ArticleLayout from '../components/layouts/article'
 import Section from '../components/Section'
 import Paragraph from '../components/Paragraph'
-import { BioSection, BioYear } from '../components/Bio'
+import Bio from '../components/Bio'
+import Skills from '../components/Skills'
+import Contacts from '../components/Contacts'
 
 const Index = () => {
   return (
@@ -31,7 +28,7 @@ const Index = () => {
           mb={6}
           align="center"
         >
-          Hello, I&apos;m a full-stack developer
+          My dream is becoming a great Full Stack Developer
         </Box>
         <Box display={{ md: 'flex' }}>
           <Box flexGrow={1}>
@@ -39,12 +36,7 @@ const Index = () => {
             <p>Developer</p>
           </Box>
 
-          <Box
-            flexShrink={0}
-            mt={{ base: 4, md: 0 }}
-            ml={{ md: 6 }}
-            align="center"
-          >
+          <Box flexShrink={0} mt={{ base: 4, md: 0 }} align="center">
             <Image
               borderColor="whiteAlpha.500"
               borderWidth={2}
@@ -62,7 +54,7 @@ const Index = () => {
 
         <Section delay={0.1}>
           <Heading as="h3" variant="section-title">
-            Work
+            Objective
           </Heading>
           <Paragraph>
             Programmer with 3 years of experience in front-end development that
@@ -73,13 +65,13 @@ const Index = () => {
             Full Stack Developer in the future.
           </Paragraph>
           <Box align="center" my={4}>
-            <NextLink href="/works">
+            <NextLink href="/projects">
               <Button
                 rightIcon={<ChevronRightIcon />}
                 background={useColorModeValue('c_blue.light', 'c_blue.dark')}
-                color={useColorModeValue('c_text.dark', 'c_text.light')}
+                color={useColorModeValue('c_white.dark', 'c_black.dark')}
               >
-                My portfolio
+                My personal projects
               </Button>
             </NextLink>
           </Box>
@@ -87,64 +79,30 @@ const Index = () => {
 
         <Section delay={0.2}>
           <Heading as="h3" variant="section-title">
+            Skills
+          </Heading>
+          <Skills />
+        </Section>
+
+        <Section delay={0.3}>
+          <Heading as="h3" variant="section-title">
             Bio
           </Heading>
-          <BioSection>
-            <BioYear>1999</BioYear>
-            Born in Binh Duong, Vietnam.
-          </BioSection>
-          <BioSection>
-            <BioYear>2021</BioYear>
-            Gradutate from FPT University with the degree in Software Engineer
-          </BioSection>
+          <Bio />
         </Section>
 
-        <Section delay={0.3}>
+        <Section delay={0.4}>
           <Heading as="h3" variant="section-title">
-            I ♥
+            I ❤️
           </Heading>
-          <Paragraph>Coding, Sports and Music</Paragraph>
+          <Paragraph>Programming, Sports and Music</Paragraph>
         </Section>
 
-        <Section delay={0.3}>
+        <Section delay={0.5}>
           <Heading as="h3" variant="section-title">
-            On the web
+            Contacts
           </Heading>
-          <List>
-            <ListItem>
-              <Link color="orange.200" href="https://github.com/TamTH-Dev">
-                <Button
-                  variant="ghost"
-                  color={useColorModeValue('c_green.light', 'c_green.dark')}
-                  leftIcon={<Icon as={IoLogoGithub} />}
-                >
-                  @madlife
-                </Button>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="https://twitter.com/Madlife48902037">
-                <Button
-                  variant="ghost"
-                  color={useColorModeValue('c_green.light', 'c_green.dark')}
-                  leftIcon={<Icon as={IoLogoTwitter} />}
-                >
-                  @Madlife48902037
-                </Button>
-              </Link>
-            </ListItem>
-            <ListItem>
-              <Link href="https://www.instagram.com/madlife_th">
-                <Button
-                  variant="ghost"
-                  color={useColorModeValue('c_green.light', 'c_green.dark')}
-                  leftIcon={<Icon as={IoLogoInstagram} />}
-                >
-                  @madlife
-                </Button>
-              </Link>
-            </ListItem>
-          </List>
+          <Contacts />
         </Section>
       </Container>
     </ArticleLayout>

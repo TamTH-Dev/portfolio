@@ -27,8 +27,6 @@ const ArticleLayout = ({ children, title }: IArticleLayoutProps) => (
     {title && (
       <Head>
         <title>{title} - Madlife</title>
-        <meta name="twitter:title" content={title} />
-        <meta property="og:title" content={title} />
       </Head>
     )}
     {children}

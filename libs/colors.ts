@@ -1,7 +1,7 @@
 export default {
   light: {
-    background: '#d5d6db',
-    text: '#0f0f14',
+    black: '#0f0f14',
+    white: '#d5d6db',
     red: '#8c4351',
     orange: '#965027',
     yellow: '#8f5e15',
@@ -12,8 +12,8 @@ export default {
     gray: '#9699a3'
   },
   dark: {
-    background: '#1a1b26',
-    text: '#c0caf5',
+    black: '#1a1b26',
+    white: '#c0caf5',
     red: '#f7768e',
     orange: '#ff9e64',
     yellow: '#e0af68',

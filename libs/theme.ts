@@ -8,35 +8,35 @@ const { light, dark } = customColors
 const styles = {
   global: (props: object) => ({
     body: {
-      background: mode(light.background, dark.background)(props),
+      background: mode(light.white, dark.black)(props),
     },
     div: {
-      color: mode(light.text, dark.text)(props)
+      color: mode(light.black, dark.white)(props)
     },
     p: {
-      color: mode(light.text, dark.text)(props)
+      color: mode(light.black, dark.white)(props)
     },
     a: {
       textDecoration: 'none !important',
-      color: mode(light.text, dark.text)(props)
+      color: mode(light.black, dark.white)(props)
     },
     h1: {
-      color: mode(light.text, dark.text)(props)
+      color: mode(light.black, dark.white)(props)
     },
     h2: {
-      color: mode(light.text, dark.text)(props)
+      color: mode(light.black, dark.white)(props)
     },
     h3: {
-      color: mode(light.text, dark.text)(props)
+      color: mode(light.black, dark.white)(props)
     },
     h4: {
-      color: mode(light.text, dark.text)(props)
+      color: mode(light.black, dark.white)(props)
     },
     h5: {
-      color: mode(light.text, dark.text)(props)
+      color: mode(light.black, dark.white)(props)
     },
     h6: {
-      color: mode(light.text, dark.text)(props)
+      color: mode(light.black, dark.white)(props)
     },
   }),
 }
@@ -49,8 +49,8 @@ const components = {
         fontSize: 20,
         textUnderlineOffset: 6,
         textDecorationThickness: 4,
-        marginTop: 3,
-        marginBottom: 4,
+        marginTop: 4,
+        marginBottom: 6,
       },
     },
   },
@@ -61,13 +61,13 @@ const fonts = {
 }
 
 const colors = {
-  c_background: {
-    light: light.background,
-    dark: dark.background,
+  c_white: {
+    light: light.white,
+    dark: dark.white,
   },
-  c_text: {
-    light: light.text,
-    dark: dark.text,
+  c_black: {
+    light: light.black,
+    dark: dark.black,
   },
   c_red: {
     light: light.red,

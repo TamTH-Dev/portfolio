@@ -32,15 +32,23 @@ interface INavbarProps {
 const LinkItem = ({ href, path, children }: ILinkItemProps) => {
   const active = path === href
   const bgActiveColor = useColorModeValue('c_red.light', 'c_red.dark')
-  const fgActiveColor = useColorModeValue('c_text.dark', 'c_text.light')
-  const fgInactiveColor = useColorModeValue('c_text.light', 'c_text.dark')
+  const fgActiveColor = useColorModeValue('c_white.light', 'c_black.dark')
+  const fgInactiveColor = useColorModeValue('c_black.light', 'c_white.dark')
   return (
     <NextLink href={href}>
       <Link
         p={2}
         bg={active ? bgActiveColor : undefined}
         color={active ? fgActiveColor : fgInactiveColor}
-        borderRadius="10px"
+        _hover={{
+          background: !active
+            ? useColorModeValue('whiteAlpha.500', 'whiteAlpha.100')
+            : undefined,
+          color: !active
+            ? useColorModeValue('c_black.light', 'c_white.dark')
+            : undefined,
+        }}
+        borderRadius="lg"
       >
         {children}
       </Link>
@@ -82,9 +90,8 @@ const Navbar = (props: INavbarProps) => {
           flexGrow={1}
           mt={{ base: 4, md: 0 }}
         >
-          <LinkItem
-            href="/works" path={path}>
-            Works
+          <LinkItem href="/projects" path={path}>
+            Personal Projects
           </LinkItem>
         </Stack>
 
@@ -103,8 +110,8 @@ const Navbar = (props: INavbarProps) => {
                 <NextLink href="/" passHref>
                   <MenuItem as={Link}>About</MenuItem>
                 </NextLink>
-                <NextLink href="/works" passHref>
-                  <MenuItem as={Link}>Works</MenuItem>
+                <NextLink href="/projects" passHref>
+                  <MenuItem as={Link}>Personal Projects</MenuItem>
                 </NextLink>
               </MenuList>
             </Menu>
