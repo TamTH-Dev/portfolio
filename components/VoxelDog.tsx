@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -25,7 +26,7 @@ function easeOutCirc(x: number) {
 
 const DogSpinner = () => (
   <Spinner
-    size="xl"
+    size="lg"
     position="absolute"
     left="50%"
     top="50%"
@@ -41,7 +42,7 @@ const DogContainer = forwardRef<HTMLDivElement, { children: ReactNode }>(
       className="voxel-dog"
       m="auto"
       mt={['-20px', '-60px', '-120px']}
-      mb={['-40px', '-140px', '-200px']}
+      mb={['-40px', '-140px', '-180px']}
       w={[280, 480, 640]}
       h={[280, 480, 640]}
       position="relative"
@@ -55,41 +56,47 @@ function VoxelDog() {
   const refContainer = useRef<HTMLDivElement>(null)
   const [loading, setLoading] = useState(true)
   const [renderer, setRenderer] = useState<WebGLRenderer>()
-  const [target] = useState(new Vector3(-0.5, 1.2, 0))
-  const [initialCameraPosition] = useState(
-    new Vector3(20 * Math.sin(0.2 * Math.PI), 10, 20 * Math.cos(0.2 * Math.PI))
+
+  const scene = useMemo(() => new Scene(), [])
+  const target = useMemo(() => new Vector3(0, 1, 0), [])
+  const initialCameraPosition = useMemo(
+    () =>
+      new Vector3(
+        20 * Math.sin(0.2 * Math.PI),
+        10,
+        20 * Math.cos(0.2 * Math.PI)
+      ),
+    []
   )
-  const [scene] = useState(new Scene())
 
   const handleWindowResize = useCallback(() => {
     const { current: container } = refContainer
+
     if (!container || !renderer) return
 
-    const scW = container.clientWidth
-    const scH = container.clientHeight
-
-    renderer.setSize(scW, scH)
+    const { clientWidth, clientHeight } = container
+    renderer.setSize(clientWidth, clientHeight)
   }, [renderer])
 
   useEffect(() => {
     const { current: container } = refContainer
-    if (!container || renderer) return
-    const scW = container.clientWidth
-    const scH = container.clientHeight
 
+    if (!container || renderer) return
+
+    const { clientWidth, clientHeight } = container
+
+    // Create a new renderer if there hasn't been one
     const newRenderer = new WebGLRenderer({
       antialias: true,
       alpha: true,
     })
     newRenderer.setPixelRatio(window.devicePixelRatio)
-    newRenderer.setSize(scW, scH)
+    newRenderer.setSize(clientWidth, clientHeight)
     newRenderer.outputEncoding = sRGBEncoding
     container.appendChild(newRenderer.domElement)
     setRenderer(newRenderer)
 
-    // 640 -> 240
-    // 8   -> 6
-    const scale = scH * 0.005 + 4.8
+    const scale = clientHeight * 0.005 + 4.8
     const camera = new OrthographicCamera(
       -scale,
       scale,
@@ -100,16 +107,16 @@ function VoxelDog() {
     )
     camera.position.copy(initialCameraPosition)
     camera.lookAt(target)
-    // setCamera(camera)
 
-    const ambientLight = new AmbientLight(0xcccccc, 1)
+    const ambientLight = new AmbientLight(0xcccccc)
     scene.add(ambientLight)
 
     const controls = new OrbitControls(camera, newRenderer.domElement)
     controls.autoRotate = true
     controls.target = target
 
-    loadGLTFModel(scene, '/dog.glb', {
+    const modelPath = '/dog.glb'
+    loadGLTFModel(scene, modelPath, {
       receiveShadow: false,
       castShadow: false,
     }).then(() => {
@@ -121,7 +128,6 @@ function VoxelDog() {
     let frame = 0
     const animate = () => {
       req = requestAnimationFrame(animate)
-
       frame = frame <= 100 ? frame + 1 : frame
 
       if (frame <= 100) {
@@ -136,6 +142,7 @@ function VoxelDog() {
         controls.update()
       }
 
+      controls.update()
       newRenderer.render(scene, camera)
     }
 

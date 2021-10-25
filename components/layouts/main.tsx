@@ -17,8 +17,7 @@ const MainLayout = ({ children, router }: IMainLayoutProps) => {
     <Box as="main">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Madlife - Homepage</title>
-        <link rel="shortcut icon" href="favicon.png" />
+        <title>Homepage - Madlife</title>
       </Head>
 
       <Navbar path={router.asPath} />

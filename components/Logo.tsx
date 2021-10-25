@@ -21,9 +21,9 @@ const Logo = () => {
         <LogoBox>
           <Image src={demo} width={20} height={20} alt="Logo" />
           <Text
-            fontFamily="M PLUS Rounded 1c"
-            fontWeight="bold"
-            ml={3}
+            ml={2}
+            fontFamily="Lobster"
+            fontSize={20}
           >
             Madlife
           </Text>

@@ -11,32 +11,32 @@ const styles = {
       background: mode(light.white, dark.black)(props),
     },
     div: {
-      color: mode(light.black, dark.white)(props)
+      color: mode(light.black, dark.white)(props),
     },
     p: {
-      color: mode(light.black, dark.white)(props)
+      color: mode(light.black, dark.white)(props),
     },
     a: {
       textDecoration: 'none !important',
-      color: mode(light.black, dark.white)(props)
+      color: mode(light.black, dark.white)(props),
     },
     h1: {
-      color: mode(light.black, dark.white)(props)
+      color: mode(light.black, dark.white)(props),
     },
     h2: {
-      color: mode(light.black, dark.white)(props)
+      color: mode(light.black, dark.white)(props),
     },
     h3: {
-      color: mode(light.black, dark.white)(props)
+      color: mode(light.black, dark.white)(props),
     },
     h4: {
-      color: mode(light.black, dark.white)(props)
+      color: mode(light.black, dark.white)(props),
     },
     h5: {
-      color: mode(light.black, dark.white)(props)
+      color: mode(light.black, dark.white)(props),
     },
     h6: {
-      color: mode(light.black, dark.white)(props)
+      color: mode(light.black, dark.white)(props),
     },
   }),
 }
@@ -45,10 +45,7 @@ const components = {
   Heading: {
     variants: {
       'section-title': {
-        textDecoration: 'underline',
-        fontSize: 20,
-        textUnderlineOffset: 6,
-        textDecorationThickness: 4,
+        fontSize: 24,
         marginTop: 4,
         marginBottom: 6,
       },
@@ -57,7 +54,8 @@ const components = {
 }
 
 const fonts = {
-  heading: `'M PLUS Rounded 1c'`,
+  heading: 'Dosis',
+  body: 'Roboto, Helvetica, Arial, sans-serif',
 }
 
 const colors = {

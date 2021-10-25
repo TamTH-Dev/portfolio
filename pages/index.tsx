@@ -16,6 +16,7 @@ import Paragraph from '../components/Paragraph'
 import Bio from '../components/Bio'
 import Skills from '../components/Skills'
 import Contacts from '../components/Contacts'
+import Header from '../components/Header'
 
 const Index = () => {
   return (
@@ -53,9 +54,7 @@ const Index = () => {
         </Box>
 
         <Section delay={0.1}>
-          <Heading as="h3" variant="section-title">
-            Objective
-          </Heading>
+          <Header text="Objective" icon="🚀" />
           <Paragraph>
             Programmer with 3 years of experience in front-end development that
             is learned from self-study, internship semester and freelance
@@ -68,8 +67,11 @@ const Index = () => {
             <NextLink href="/projects">
               <Button
                 rightIcon={<ChevronRightIcon />}
-                background={useColorModeValue('c_blue.light', 'c_blue.dark')}
+                background={useColorModeValue('c_cyan.light', 'c_cyan.dark')}
                 color={useColorModeValue('c_white.dark', 'c_black.dark')}
+                _hover={{
+                  background: useColorModeValue('c_blue.light', 'c_blue.dark'),
+                }}
               >
                 My personal projects
               </Button>
@@ -78,30 +80,22 @@ const Index = () => {
         </Section>
 
         <Section delay={0.2}>
-          <Heading as="h3" variant="section-title">
-            Skills
-          </Heading>
+          <Header text="Skills" icon="🛸" />
           <Skills />
         </Section>
 
         <Section delay={0.3}>
-          <Heading as="h3" variant="section-title">
-            Bio
-          </Heading>
+          <Header text="Bio" icon="🙋" />
           <Bio />
         </Section>
 
         <Section delay={0.4}>
-          <Heading as="h3" variant="section-title">
-            I ❤️
-          </Heading>
+          <Header text="Interests" icon="❤️" />
           <Paragraph>Programming, Sports and Music</Paragraph>
         </Section>
 
         <Section delay={0.5}>
-          <Heading as="h3" variant="section-title">
-            Contacts
-          </Heading>
+          <Header text="Contacts" icon="📬" />
           <Contacts />
         </Section>
       </Container>

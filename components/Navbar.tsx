@@ -45,7 +45,8 @@ const LinkItem = ({ href, path, children }: ILinkItemProps) => {
   return (
     <NextLink href={href}>
       <Link
-        p={2}
+        py={2}
+        px={4}
         bg={active ? bgActiveColor : undefined}
         color={active ? fgActiveColor : fgInactiveColor}
         _hover={{
@@ -64,17 +65,19 @@ const Navbar = (props: INavbarProps) => {
   const { path } = props
   return (
     <Box
+      fontFamily="Dosis"
+      fontWeight={600}
+      fontSize={16}
       position="fixed"
       as="nav"
       w="100%"
-      bg={useColorModeValue('#d5d6db', '#1a1b26')}
-      style={{ backdropFilter: 'blur(10px)' }}
-      zIndex={1}
+      bg={useColorModeValue('c_white.light', 'c_black.dark')}
+      zIndex={99999}
       {...props}
     >
       <Container
         display="flex"
-        p={2}
+        p={2.5}
         maxW="container.md"
         flexWrap="wrap"
         align="center"
@@ -91,7 +94,7 @@ const Navbar = (props: INavbarProps) => {
           display={{ base: 'none', md: 'flex' }}
           width={{ base: 'full', md: 'auto' }}
           alignItems="center"
-          flexGrow={1}
+          flex={1}
           mt={{ base: 4, md: 0 }}
         >
           <LinkItem href="/projects" path={path}>
@@ -99,7 +102,7 @@ const Navbar = (props: INavbarProps) => {
           </LinkItem>
         </Stack>
 
-        <Box flex={1} align="right">
+        <Box align="right">
           <ThemeToggleButton />
           <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
             <Menu>
