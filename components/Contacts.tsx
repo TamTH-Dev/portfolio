@@ -10,7 +10,6 @@ import {
 import {
   IoLogoFacebook,
   IoLogoGithub,
-  IoLogoInstagram,
   IoLogoLinkedin,
   IoLogoTwitter,
 } from 'react-icons/io5'
@@ -25,11 +24,11 @@ interface IContactProps {
 const Contact = ({ text, href, icon }: IContactProps) => {
   return (
     <ListItem>
-      <Link color="orange.200" href={href}>
+      <Link color="orange.200" href={href} target="_blank">
         <Button
           variant="ghost"
           color={useColorModeValue('c_green.light', 'c_green.dark')}
-          leftIcon={<Icon as={icon} />}
+          leftIcon={<Icon marginTop="4px" as={icon} />}
         >
           {text}
         </Button>
@@ -59,11 +58,6 @@ const Contacts = () => {
       text: '@Tâm Trần',
       href: 'https://www.facebook.com/profile.php?id=100005755451639',
       icon: IoLogoFacebook,
-    },
-    {
-      text: '@madlife_th',
-      href: 'https://www.instagram.com/madlife_th',
-      icon: IoLogoInstagram,
     },
   ]
 

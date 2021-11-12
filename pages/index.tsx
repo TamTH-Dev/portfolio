@@ -13,8 +13,9 @@ import { ChevronRightIcon } from '@chakra-ui/icons'
 import ArticleLayout from '../components/layouts/article'
 import Section from '../components/Section'
 import Paragraph from '../components/Paragraph'
-import Bio from '../components/Bio'
 import Skills from '../components/Skills'
+import Experience from '../components/Experience'
+import Certifications from '../components/Certifications'
 import Contacts from '../components/Contacts'
 import Header from '../components/Header'
 
@@ -85,8 +86,13 @@ const Index = () => {
         </Section>
 
         <Section delay={0.3}>
-          <Header text="Bio" icon="🙋" />
-          <Bio />
+          <Header text="Education / Work Experience" icon="👨‍🎓" />
+          <Experience />
+        </Section>
+
+        <Section delay={0.3}>
+          <Header text="Certifications" icon="📑" />
+          <Certifications />
         </Section>
 
         <Section delay={0.4}>

@@ -1,55 +1,48 @@
-import React from 'react'
-import { Box, Container, Flex, Spinner } from '@chakra-ui/react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { Container, SimpleGrid } from '@chakra-ui/react'
 
 import ArticleLayout from '../components/layouts/article'
+import Section from '../components/Section'
+import { RepoGridItem } from '../components/GridItem'
+
+interface IRepo {
+  id: number
+  html_url: string
+  name: string
+  description: string
+}
 
 const Works = () => {
+  const [repos, setRepos] = useState([])
+  const reposUrl = 'https://api.github.com/users/TamTH-Dev/repos'
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      const res = await axios.get(reposUrl)
+      setRepos(res.data as [])
+    }
+
+    fetchRepos()
+  }, [])
+
   return (
     <ArticleLayout title="Personal Projects">
-      <Container>
-        <Flex
-          flexDirection="column"
-          alignItems="center"
-          fontSize={20}
-          textAlign="center"
-          mt={10}
-        >
-          <Spinner
-            size="lg"
-            color="c_blue.dark"
-          />
-          <Box mt={2}>Updating...</Box>
-        </Flex>
-        {/*         <Heading as="h3" fontSize={20} mb={4}> */}
-        {/*           Works */}
-        {/*         </Heading> */}
-        {/*         <SimpleGrid columns={[1, 1, 2]} gap={6}> */}
-        {/*           <Section> */}
-        {/*             <WorkGridItem */}
-        {/*               id="walknote" */}
-        {/*               title="walknote" */}
-        {/*               thumbnail={thumbWalknote} */}
-        {/*             > */}
-        {/*               Music recommendation app for iOS */}
-        {/*             </WorkGridItem> */}
-        {/*           </Section> */}
-        {/*           <Section delay={0.1}> */}
-        {/*             <WorkGridItem */}
-        {/*               id="fourpainters" */}
-        {/*               title="The four painters" */}
-        {/*               thumbnail={thumbFourPainters} */}
-        {/*             > */}
-        {/*               A video work generated with deep learning, imitating famous four */}
-        {/*               painters like Van Gogh */}
-        {/*             </WorkGridItem> */}
-        {/*           </Section> */}
-        {/*           <Section delay={0.1}> */}
-        {/*             <WorkGridItem id="menkiki" thumbnail={thumbMenkiki} title="Menkiki"> */}
-        {/*               An app that suggests ramen(noodle) shops based on a given photo of */}
-        {/*               the ramen you want to eat */}
-        {/*             </WorkGridItem> */}
-        {/*           </Section> */}
-        {/*         </SimpleGrid> */}
+      <Container maxW="container.md">
+        <SimpleGrid columns={[1, 1, 2]} gap={6}>
+          {repos.map((repo: IRepo) => (
+            <Section key={repo.id}>
+              <RepoGridItem
+                thumbnail="/images/github.png"
+                id={repo.id}
+                title={repo.name}
+                url={repo.html_url}
+              >
+                {repo.description}
+              </RepoGridItem>
+            </Section>
+          ))}
+        </SimpleGrid>
       </Container>
     </ArticleLayout>
   )

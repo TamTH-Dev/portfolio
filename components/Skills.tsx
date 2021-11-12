@@ -21,12 +21,17 @@ const Skills = () => {
   return (
     <Box>
       <Flex gridColumnGap={4} gridRowGap={4} flexWrap="wrap">
+        <Skill skill="HTML" />
+        <Skill skill="CSS" />
+        <Skill skill="SCSS" />
         <Skill skill="Javascript" />
+        <Skill skill="Typescript" />
         <Skill skill="ReactJS" />
         <Skill skill="Angular" />
         <Skill skill="VueJS" />
         <Skill skill="NodeJS" />
         <Skill skill="ExpressJS" />
+        <Skill skill="MongoDB" />
         <Skill skill="Python" />
         <Skill skill="Linux" />
         <Skill skill="Git" />
